@@ -37,6 +37,8 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'rubocop'
   gem 'guard-rdoc'
   gem 'database_cleaner', '~> 1.5.1'
   gem 'poltergeist'
