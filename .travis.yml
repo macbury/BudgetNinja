@@ -6,3 +6,20 @@ services:
 before_script:
   - mysql -e 'create database bn_test;'
 script: RAILS_ENV=test bin/setup && bundle exec rake db:create db:migrate && bundle exec rspec .
+addons:
+  apt:
+    packages:
+      - automake
+      - autoconf
+      - autopoint
+      - libtool
+      - gtk-doc-tools
+      - gettext
+      - libidn11
+      - libidn11-dev
+      - libidn2-0
+      - libidn2-0-dev
+      - libicu48
+      - libicu-dev
+      - libunistring0
+      - libunistring-dev
