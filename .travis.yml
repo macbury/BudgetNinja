@@ -5,3 +5,4 @@ services:
   - mysql
 before_script:
   - mysql -e "create database IF NOT EXISTS bn_test;" -uroot
+script: bundle exec rspec .
