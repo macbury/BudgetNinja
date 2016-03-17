@@ -5,4 +5,4 @@ services:
   - mysql
 before_script:
   - mysql -e 'create database bn_test;'
-script: RAILS_ENV=test bin/setup && bundle exec rspec .
+script: RAILS_ENV=test bin/setup && rake db:create db:migrate && bundle exec rspec .
