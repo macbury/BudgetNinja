@@ -1,5 +1,0 @@
-defaults: &defaults
-  host: 'budget-ninja.local'
-
-development:
-  <<: *defaults
