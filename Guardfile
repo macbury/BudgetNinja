@@ -75,7 +75,18 @@ guard :rspec, cmd: "bundle exec rspec" do
   end
 end
 
-guard :rubocop do
-  watch(%r{.+\.rb$})
-  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
+# Usage:
+#     guard :foreman, <options hash>
+#
+# Possible options:
+# * :concurreny - how many of each type of process you would like to run (default is, sensibly, one of each)
+# * :env - one or more .env files to load
+# * :procfile - an alternate Procfile to use (default is Procfile)
+# * :port - an alternate port to use (default is 5000)
+# * :root - an alternate application root
+guard :foreman do
+  # Rails example - Watch controllers, models, helpers, lib, and config files
+  watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
+  watch( /^lib\/.+\.rb$/ )
+  watch( /^config\/*/ )
 end

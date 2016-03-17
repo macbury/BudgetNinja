@@ -3,12 +3,13 @@
 <head>
   <title>BudgetNinja</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag *webpack_asset_paths("application") %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= yield %>
 
-<%= yield %>
-
+  <%= webpack_dev_server_tag %>
 </body>
 </html>

@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # For better developing using vagrant
+  Rails.configuration.webpack.dev_server.host = MainSettings.host
 end

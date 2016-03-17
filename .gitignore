@@ -12,3 +12,6 @@
 !/log/.keep
 /tmp
 doc/
+# Added by webpack-rails
+/node_modules
+/public/webpack

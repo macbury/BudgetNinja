@@ -13,12 +13,12 @@ module ScreenshotSupport
 
   # Take a failure rspec screenshoot
   def self.failure!(page, example)
-    self.take!(page, example, RSPEC_FAILURE)
+    take!(page, example, RSPEC_FAILURE)
   end
 
   # Take a success rspec screenshoot
   def self.success!(page, example)
-    self.take!(page, example, RSPEC_SUCCESS)
+    take!(page, example, RSPEC_SUCCESS)
   end
 
   def self.take!(page, example, storage)
