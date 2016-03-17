@@ -17,9 +17,7 @@
 
 # options are passed to rdoc:
 # guard :rdoc, format: :sdoc, output: 'documentation' do
-guard :rdoc do
-  watch(%r{.+\.rb$})
-end
+
 
 # Note: The cmd option is now required due to the increasing number of ways
 #       rspec may be run, below are examples of the most common uses.
@@ -86,7 +84,17 @@ end
 # * :root - an alternate application root
 guard :foreman do
   # Rails example - Watch controllers, models, helpers, lib, and config files
-  watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
-  watch( /^lib\/.+\.rb$/ )
-  watch( /^config\/*/ )
+  #watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
+  #watch( /^lib\/.+\.rb$/ )
+  watch( /Procfile/ )
+end
+
+# Add files and commands to this file, like the example:
+#   watch(%r{file/path}) { `command(s)` }
+#
+
+guard 'yard' do
+  watch(%r{app/.+\.rb})
+  watch(%r{lib/.+\.rb})
+  watch(%r{ext/.+\.c})
 end

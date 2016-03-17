@@ -1,8 +1,8 @@
 class CreateAccounts < ActiveRecord::Migration
   def change
     create_table :accounts do |t|
-      t.string  :name
-      t.integer :user_id, null: false
+      t.string  :name, default: ''
+      t.integer :user_id
       t.money   :balance
       t.timestamps null: false
     end

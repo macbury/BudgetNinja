@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316124318) do
+ActiveRecord::Schema.define(version: 20160317131252) do
 
   create_table "accounts", force: :cascade do |t|
-    t.string   "name",             limit: 255
-    t.integer  "user_id",          limit: 4,                   null: false
+    t.string   "name",             limit: 255, default: ""
+    t.integer  "user_id",          limit: 4
     t.integer  "balance_cents",    limit: 4,   default: 0,     null: false
     t.string   "balance_currency", limit: 255, default: "PLN", null: false
     t.datetime "created_at",                                   null: false
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20160316124318) do
   end
 
   add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name",       limit: 255, default: "", null: false
+    t.integer  "account_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "profiles", ["account_id"], name: "index_profiles_on_account_id", using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
