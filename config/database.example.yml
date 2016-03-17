@@ -1,0 +1,21 @@
+test:
+  adapter: mysql2
+  database: bn_test
+  username: travis
+  encoding: utf8
+
+development:
+  database: budget_ninja-development
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password: ilikerandompasswords
+  socket: "/run/mysql-budget_ninja/mysqld.sock"
+  
+production:
+  database: budget_ninja-production
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password: ilikerandompasswords
+  socket: "/run/mysql-budget_ninja/mysqld.sock"
