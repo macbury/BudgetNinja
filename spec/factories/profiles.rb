@@ -1,7 +1,5 @@
 FactoryGirl.define do
   factory :profile do
-    name "MyString"
-    account_id 1
-    user_id 1
+    sequence(:name) { |i| "profile#{i}" }
   end
 end
