@@ -3,3 +3,5 @@ defaults: &defaults
 
 development:
   <<: *defaults
+test:
+  <<: *defaults
