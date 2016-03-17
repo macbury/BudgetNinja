@@ -29,6 +29,7 @@ group :development, :test do
   gem 'capybara-email'
   gem 'guard-shell'
   gem 'guard-yard'
+  gem 'travis'
 end
 
 group :development do

@@ -4,5 +4,5 @@ rvm:
 services:
   - mysql
 before_script:
-  - mysql -e "create database IF NOT EXISTS bn_test;" -uroot
+  - mysql -e 'create database bn_test;'
 script: bundle exec rspec .
