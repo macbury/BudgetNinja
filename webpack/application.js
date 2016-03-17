@@ -1,10 +1,13 @@
-console.log("Hello world!");
+import React from "react";
+import ReactDom from "react-dom";
 
-class Test {
-
-  constructor() {
-    console.log("Working?");
+class Layout extends React.Component {
+  render() {
+    return (
+      <h1>Works!</h1>
+    );
   }
 }
 
-new Test();
+const app = document.getElementById('app');
+ReactDom.render(<Layout/>, app);
