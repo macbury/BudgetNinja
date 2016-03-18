@@ -29,7 +29,9 @@ group :development, :test do
   gem 'capybara-email'
   gem 'guard-shell'
   gem 'guard-yard'
-  gem 'travis'
+  gem 'guard-rubocop'
+  gem 'travis', require: false
+  gem 'rubocop', require: false
 end
 
 group :development do

@@ -1,0 +1,15 @@
+AllCops:
+  Exclude:
+    - 'lib/templates/**/*'
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'spec/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'webpack/**/*'
+    - 'public/**/*'
+    - 'config/**/*'
+    - 'Guardfile'
+
+LineLength:
+  Enabled: false

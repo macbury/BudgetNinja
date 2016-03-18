@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   # Creates first Account and Profile
   def create_initial_account_and_profile!
-    account = self.accounts.create!(name: I18n.t('.default.account.name'))
-    profile = self.profiles.create!(name: I18n.t('.default.profile.name'), account_id: account.id)
+    account = accounts.create!(name: I18n.t('.default.account.name'))
+    profiles.create!(name: I18n.t('.default.profile.name'), account_id: account.id)
   end
 end
