@@ -1,0 +1,3 @@
+// Setup base bootstrap theme.
+$icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/"; // Without this webpack will be searching fonts in strange places
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss"
