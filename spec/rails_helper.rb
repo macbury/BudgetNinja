@@ -43,7 +43,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include FactoryGirl::Syntax::Methods
   config.include(ScreenshotSupport, type: :feature)
-  
+
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
 

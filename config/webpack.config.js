@@ -9,7 +9,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var devServerPort = 3808;
 
 // set TARGET=production on the environment to add asset fingerprints
-var production  = process.env.TARGET === 'production';
+var production  = process.env.TARGET === 'production' || process.env.TARGET === 'test';
 var development = !production;
 var applicationEntry = [];
 

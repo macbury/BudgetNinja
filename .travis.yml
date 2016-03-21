@@ -6,4 +6,5 @@ services:
 before_script:
   - sudo apt-get install -y phantomjs
   - mysql -e 'create database bn_test;'
-script: RAILS_ENV=test bin/setup && bundle exec rake db:create db:migrate && bundle exec rspec spec/
+  - foreman start &
+script: CI=true RAILS_ENV=test bin/setup && bundle exec rake db:create db:migrate && bundle exec rspec spec/
