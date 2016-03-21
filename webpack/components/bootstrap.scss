@@ -1,0 +1,8 @@
+// Setup base bootstrap theme with minimum content
+$icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/"; // Without this webpack will be searching fonts in strange places
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables.scss";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins.scss";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize.scss";
+
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding.scss";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid.scss";

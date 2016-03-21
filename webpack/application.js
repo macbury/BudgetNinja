@@ -1,15 +1,22 @@
 import React from "react";
 import ReactDom from "react-dom";
+
+import AuthPage from './components/pages/auth/auth_page.js';
+import NotFound from './components/pages/not_found_page.js';
+
 import Layout from './components/layout';
-import Hello from './components/hello';
-import { Router, Route, IndexRoute, browserHistory } from "react-router";
+import { browserHistory, Router, Route, IndexRoute } from "react-router";
 
 const appContainer = document.getElementById('app-container');
 
+
+/**
+* Prepare routes
+*/
 ReactDom.render((
   <Router history={browserHistory}>
-    <Route path="/" component={Layout}>
-       <Route path='test' component={Hello} />
-    </Route>
+    <Route path='/' component={Layout} />
+    <Route path='/auth' component={AuthPage} />
+    <Route path="*" component={NotFound} />
   </Router>
 ), appContainer);

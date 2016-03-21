@@ -19,6 +19,10 @@ if (development) {
 }
 
 applicationEntry.push('./webpack/application.js');
+var scssLoader = "style!css?modules!sass";
+if (development) {
+  scssLoader = "style!css?sourceMap&modules!sass?sourceMap";
+}
 
 var config = {
   entry: {
@@ -52,7 +56,7 @@ var config = {
         }
       },
       // prepare source map for css
-      { test: /\.scss$/, loader: "style!css?sourceMap&modules!sass?sourceMap" },
+      { test: /\.scss$/, loader: scssLoader },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
       // Load font for bootstrap sass
       { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
@@ -84,7 +88,10 @@ if (production) {
       'process.env': { NODE_ENV: JSON.stringify('production') }
     }),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin()
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "commons"
+    })
   );
 } else {
   config.devServer = {

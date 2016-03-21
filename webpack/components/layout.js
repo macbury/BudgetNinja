@@ -1,6 +1,6 @@
 import React from "react";
 import Hello from './hello';
-import styles from './theme.scss';
+
 
 export default class Layout extends React.Component {
   render() {

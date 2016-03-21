@@ -7,7 +7,7 @@ export default class Hello extends React.Component {
     return (
       <span className={styles.normal}>
         Hello there friend!!!
-        <Link to="/test">Home</Link>
+        <Link to="/auth">Home</Link>
       </span>
     );
   }
