@@ -4,17 +4,25 @@
 var path = require('path');
 var webpack = require('webpack');
 var StatsPlugin = require('stats-webpack-plugin');
-
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 // must match config.webpack.dev_server.port
 var devServerPort = 3808;
 
 // set TARGET=production on the environment to add asset fingerprints
-var production = process.env.TARGET === 'production';
+var production  = process.env.TARGET === 'production';
+var development = !production;
+var applicationEntry = [];
+
+if (development) {
+  applicationEntry.push('webpack-dev-server/client?http://budget-ninja.local:3808/');
+  applicationEntry.push('webpack/hot/only-dev-server');
+}
+
+applicationEntry.push('./webpack/application.js');
 
 var config = {
   entry: {
-    // Sources are expected to live in $app_root/webpack
-    'application': './webpack/application.js'
+    'application': applicationEntry
   },
 
   output: {
@@ -42,7 +50,10 @@ var config = {
           presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
         }
-      }
+      },
+
+      { test: /\.scss$/, loader: "style!css?sourceMap&modules!sass?sourceMap" },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
     ]
   },
 
@@ -55,7 +66,8 @@ var config = {
       chunks: false,
       modules: false,
       assets: true
-    })]
+    })
+  ]
 };
 
 if (production) {
@@ -78,7 +90,7 @@ if (production) {
   };
   config.output.publicPath = '//0.0.0.0:' + devServerPort + '/webpack/';
   // Source maps
-  config.devtool = 'cheap-module-eval-source-map';
+  config.devtool = 'source-map';
 }
 
 module.exports = config;

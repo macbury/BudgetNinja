@@ -93,11 +93,11 @@ end
 #   watch(%r{file/path}) { `command(s)` }
 #
 
-guard 'yard' do
-  watch(%r{app/.+\.rb})
-  watch(%r{lib/.+\.rb})
-  watch(%r{ext/.+\.c})
-end
+#guard 'yard' do
+#  watch(%r{app/.+\.rb})
+#  watch(%r{lib/.+\.rb})
+#  watch(%r{ext/.+\.c})
+#end
 
 # Add files and commands to this file, like the example:
 #   watch(%r{file/path}) { `command(s)` }

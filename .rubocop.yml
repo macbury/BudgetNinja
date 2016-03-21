@@ -10,6 +10,7 @@ AllCops:
     - 'public/**/*'
     - 'config/**/*'
     - 'Guardfile'
+    - 'node_modules/**/*'
 
 LineLength:
   Enabled: false
