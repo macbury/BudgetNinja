@@ -6,5 +6,4 @@ feature 'Index page', js: true do
     visit root_path
     expect(page).to have_content('Hello')
   end
-
 end
