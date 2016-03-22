@@ -5,11 +5,14 @@ rvm:
 services:
   - mysql
 before_script:
+  - sudo update-alternatives --remove-all nodejs
+  - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - node -v
+  - nodejs -v
+  - npm install
   - sudo apt-get install -y phantomjs
   - mysql -e 'create database bn_test;'
   - RAILS_ENV=test bin/setup
   - RAILS_ENV=test bundle exec rake db:create db:migrate
-  - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
-  - sudo apt-get install -y nodejs
-  - npm install
 script: CI=true RAILS_ENV=test bundle exec rspec spec/
