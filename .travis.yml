@@ -11,7 +11,7 @@ before_script:
   - sudo apt-get install -y nodejs
   - sudo rm /usr/bin/node
   - sudo ln -s /usr/bin/nodejs /usr/bin/node
-  - npm install
+  - nodejs npm install
   - sudo apt-get install -y phantomjs
   - mysql -e 'create database bn_test;'
   - RAILS_ENV=test bin/setup
