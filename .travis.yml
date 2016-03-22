@@ -7,7 +7,6 @@ services:
 before_script:
   - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
   - sudo apt-get install -y nodejs
-  - sudo update-alternatives --remove-all nodejs
   - node -v
   - nodejs -v
   - npm install
