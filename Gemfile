@@ -7,7 +7,12 @@ gem 'webpack-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'yard', group: :doc
 
-gem 'devise'
+group :auth do
+  gem 'devise'
+  gem 'devise_token_auth'
+  gem 'omniauth'
+end
+
 gem 'pry-rails'
 gem 'simple_form'
 gem 'settingslogic'

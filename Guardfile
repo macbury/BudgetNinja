@@ -83,9 +83,6 @@ end
 # * :port - an alternate port to use (default is 5000)
 # * :root - an alternate application root
 guard :foreman do
-  # Rails example - Watch controllers, models, helpers, lib, and config files
-  #watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
-  #watch( /^lib\/.+\.rb$/ )
   watch( /Procfile/ )
 end
 
@@ -102,9 +99,10 @@ end
 # Add files and commands to this file, like the example:
 #   watch(%r{file/path}) { `command(s)` }
 #
-# guard :shell do
-#  watch(/(.*).txt/) {|m| `tail #{m[0]}` }
-# end
+guard :shell do
+  watch(/Gemfile/) {|m| `touch tmp/restart.txt` }
+  watch(/Gemfile.lock/) {|m| `touch tmp/restart.txt` }
+end
 
 guard :rubocop do
   watch(%r{.+\.rb$})
