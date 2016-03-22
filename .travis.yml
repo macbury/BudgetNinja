@@ -1,4 +1,7 @@
 language: ruby
+env:
+  - CI=true
+  - RAILS_ENV=test
 rvm:
   - 2.3.0
 services:
@@ -6,4 +9,9 @@ services:
 before_script:
   - sudo apt-get install -y phantomjs
   - mysql -e 'create database bn_test;'
-script: CI=true RAILS_ENV=test bin/setup && bundle exec rake db:create db:migrate && bundle exec rspec spec/
+  - bin/setup
+  - bundle exec rake db:create db:migrate
+  - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - npm install
+script: bundle exec rspec spec/
