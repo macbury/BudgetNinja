@@ -9,6 +9,7 @@ before_script:
   - sudo apt-get purge nodejs -y
   - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
   - sudo apt-get install -y nodejs
+  - sudo rm /usr/bin/node
   - sudo ln -s /usr/bin/nodejs /usr/bin/node
   - npm install
   - sudo apt-get install -y phantomjs
