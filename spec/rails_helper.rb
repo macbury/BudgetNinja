@@ -19,9 +19,6 @@ end
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_driver    = :poltergeist
-Capybara.server_port       = 3001
-Capybara.app_host          = 'http://localhost:3001'
-
 Warden.test_mode!
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -50,8 +47,13 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.before(:suite) do
+    WebpackSupport.start! if ENV['CI']
     Warden.test_reset!
     ScreenshotSupport.clean!
+  end
+
+  config.after(:suite) do
+    WebpackSupport.stop!
   end
 
   config.around(:each) do |example|
