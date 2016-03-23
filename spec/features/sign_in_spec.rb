@@ -19,6 +19,18 @@ feature 'User sign in', js: true do
       expect(page).to have_content(email_label)
       expect(page).to have_content(password_label)
     end
+
+    scenario 'i should get errors for non existing user' do
+      user = build(:user)
+      visit auth_path
+
+      fill_in email_label, with: user.email
+      fill_in password_label, with: user.password
+
+      click_on(sign_in_button)
+
+      expect(page).to have_content('Invalid credentials.')
+    end
   end
 
 end

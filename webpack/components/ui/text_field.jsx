@@ -24,7 +24,7 @@ export default class TextField extends React.Component {
 
     return <div className="form-group">
       <label for={this.props.name}>{ this.props.label }</label>
-      <input type={this.props.type} className="form-control" name={this.props.name} value={this.props.value} onChange={this.props.onChange} disabled={this.props.disabled} />
+      <input type={this.props.type} className="form-control" id={this.props.name} name={this.props.name} value={this.props.value} onChange={this.props.onChange} disabled={this.props.disabled} />
       { errorSpan }
     </div>;
   }
