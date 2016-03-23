@@ -12,23 +12,24 @@ export default class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
+      error: null,
     };
   }
 
   onSignInSuccess(result) {
     console.log("success", result);
-    this.setState({ loading: false });
+    this.setState({ loading: false, error: null });
   }
 
   onSignInFailure(result) {
     console.log("error", result);
-    this.setState({ loading: false });
+    this.setState({ loading: false, error: result.reason });
   }
 
   signIn(e) {
     e.preventDefault();
     var form = this.state;
-    this.setState({ loading: true });
+    this.setState({ loading: true, error: null });
     SessionStore.login(form.email, form.password).then(this.onSignInSuccess.bind(this)).fail(this.onSignInFailure.bind(this));
   }
 
@@ -45,6 +46,7 @@ export default class LoginForm extends React.Component {
       <TextField label="E-mail:" name='email' value={this.state.email} type="email" onChange={this.onEmailFieldChange.bind(this)} disabled={this.state.loading} />
       <TextField label="Password:" name='password' value={this.state.password} type="password" onChange={this.onPasswordFieldChange.bind(this)} disabled={this.state.loading} />
       <button disabled={this.state.loading}>Sign in</button>
+      <p>{ this.state.error }</p>
     </form>;
   }
 
