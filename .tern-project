@@ -1,0 +1,14 @@
+{
+  "ecmaVersion": 6,
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "loadEagerly": [
+    "webpack/**/*.js"
+  ],
+  "dontLoad": [
+    "public/**/*.js",
+    "node_modules/**/*.js"
+  ]
+}
