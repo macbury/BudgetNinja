@@ -9,8 +9,8 @@ feature 'User sign in', js: true do
   context 'as guest' do
     scenario 'after i visit root path i should be redirected to /auth' do
       visit root_path
-      expect(current_path).to eq(auth_path)
       expect(page).to have_content(sign_in_button)
+      expect(current_path).to eq(auth_path)
     end
 
     scenario 'after i visit /auth i should see sign in page' do
@@ -30,6 +30,17 @@ feature 'User sign in', js: true do
       click_on(sign_in_button)
 
       expect(page).to have_content('Invalid credentials.')
+    end
+
+    scenario 'i should be able to login' do
+      user = create(:user)
+      visit auth_path
+
+      fill_in email_label, with: user.email
+      fill_in password_label, with: user.password
+
+      click_on(sign_in_button)
+      expect(current_path).to eq(root_path)
     end
   end
 
