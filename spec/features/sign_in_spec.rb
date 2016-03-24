@@ -40,6 +40,7 @@ feature 'User sign in', js: true do
       fill_in password_label, with: user.password
 
       click_on(sign_in_button)
+      expect(page).not_to have_content(sign_in_button)
       expect(current_path).to eq(root_path)
     end
   end

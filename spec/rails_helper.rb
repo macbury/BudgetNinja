@@ -12,9 +12,10 @@ require 'factory_girl_rails'
 
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, {
-    js_errors: false,
+    js_errors: true,
     window_size: [1920, 1080],
-    phantomjs_logger: Rails.logger
+    phantomjs_logger: Rails.logger,
+    inspector: true
   })
 end
 
@@ -22,7 +23,7 @@ Capybara.javascript_driver = :poltergeist
 Capybara.default_driver    = :poltergeist
 Warden.test_mode!
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
 ActiveRecord::Migration.maintain_test_schema!
 
 Shoulda::Matchers.configure do |config|
@@ -44,7 +45,7 @@ RSpec.configure do |config|
 
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
-
+  config.order = 'random'
   config.filter_rails_from_backtrace!
 
   config.before(:suite) do
@@ -74,14 +75,11 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do |example|
+    DatabaseCleaner.clean
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
     if example.metadata[:type] == :feature
       clear_emails
     end
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
   end
 end

@@ -16,9 +16,17 @@ export default class LoginForm extends React.Component {
     };
   }
 
+  /**
+  * Redirect to last path or to root path
+  */
   onSignInSuccess(result) {
-    console.log("success", result);
-    this.setState({ loading: false, error: null });
+    const { location } = this.props
+    this.setState({ loading: true, error: null });
+    if (location != null && location.state != null && location.state.nextPathname) {
+      this.context.router.replace(location.state.nextPathname)
+    } else {
+      this.context.router.replace('/')
+    }
   }
 
   onSignInFailure(result) {
@@ -49,5 +57,8 @@ export default class LoginForm extends React.Component {
       <p>{ this.state.error }</p>
     </form>;
   }
-
 }
+
+LoginForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};

@@ -12,8 +12,13 @@ class SessionStore extends EventEmitter {
   constructor() {
     super();
     this.user = null;
+    this.booting = true;
     PubSub.subscribe('auth', function() {
       this.setUser(Auth.user);
+      if (this.booting) {
+        this.emit('boot');
+      }
+      this.booting = false;
     }.bind(this));
 
     this.configureAuth();
