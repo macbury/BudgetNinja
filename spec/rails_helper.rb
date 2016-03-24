@@ -40,7 +40,9 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers, type: :feature
   config.include Warden::Test::Helpers, type: :feature
   config.include Devise::TestHelpers, type: :controller
+  config.include ShowMeTheCookies, type: :feature
   config.include FactoryGirl::Syntax::Methods
+  config.extend FeatureDevise, type: :feature
   config.include(ScreenshotSupport, type: :feature)
 
   config.use_transactional_fixtures = false

@@ -6,7 +6,21 @@ feature 'User sign in', js: true do
   let(:email_label) { 'E-mail' }
   let(:password_label) { 'Password' }
 
+  context 'as logged in user' do
+    as_user(:user)
+
+    scenario 'after i visit root path i should not be redirected to /auth' do
+      user = create(:user)
+      visit root_path
+      expect(page).not_to have_content(sign_in_button)
+      expect(current_path).to eq(root_path)
+    end
+
+  end
+
   context 'as guest' do
+    as_guest
+
     scenario 'after i visit root path i should be redirected to /auth' do
       visit root_path
       expect(page).to have_content(sign_in_button)

@@ -35,6 +35,7 @@ group :development, :test do
   gem 'guard-shell'
   gem 'guard-yard'
   gem 'guard-rubocop'
+  gem 'show_me_the_cookies'
   gem 'travis', require: false
   gem 'rubocop', require: false
 end

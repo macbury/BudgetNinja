@@ -8,6 +8,7 @@ import AuthPage from './components/pages/auth/auth_page.js';
 import NotFound from './components/pages/not_found_page.js';
 import Layout from './components/layout';
 import Session from './components/session.jsx';
+
 import { browserHistory, Router, Route, IndexRoute } from "react-router";
 
 /**
@@ -22,8 +23,8 @@ ReactDom.render((
   <Session>
     <Router history={browserHistory} >
       <Route path='/auth' component={AuthPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
-      <Route path='/' component={ApplicationLayout}>
-        <IndexRoute component={Layout} onEnter={BeforeFilter.ensureUserIsLoggedIn} />
+      <Route path='/' component={ApplicationLayout} onEnter={BeforeFilter.ensureUserIsLoggedIn}>
+        <IndexRoute component={Layout} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
