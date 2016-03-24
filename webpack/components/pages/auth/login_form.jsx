@@ -23,9 +23,9 @@ export default class LoginForm extends React.Component {
     const { location } = this.props
     this.setState({ loading: true, error: null });
     if (location != null && location.state != null && location.state.nextPathname) {
-      this.context.router.replace(location.state.nextPathname)
+      this.context.router.replace(location.state.nextPathname);
     } else {
-      this.context.router.replace('/')
+      this.context.router.replace('/');
     }
   }
 

@@ -21,4 +21,4 @@ function ensureUserIsLoggedOut(nextState, replaceState) {
   }
 }
 
-export default { ensureUserIsLoggedIn };
+export default { ensureUserIsLoggedIn, ensureUserIsLoggedOut };

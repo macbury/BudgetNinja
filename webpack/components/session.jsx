@@ -10,7 +10,7 @@ export default class Session extends React.Component {
     super();
     this.state = { bootComplete: false };
   }
-  
+
   onSessionBoot() {
     this.setState({ bootComplete: true });
   }
@@ -20,7 +20,7 @@ export default class Session extends React.Component {
   }
 
   componentWillUnmount() {
-    SessionStore.remove('boot', this.onSessionBoo);
+    SessionStore.remove('boot', this.onSessionBoot);
   }
 
   render() {

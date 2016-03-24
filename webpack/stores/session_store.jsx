@@ -1,7 +1,8 @@
 import { EventEmitter } from 'events';
 import Auth from 'j-toker';
 import PubSub from 'pubsub-js';
-
+import Dispatcher from '../lib/dispatcher';
+import SessionContstants from '../constants/session_constants';
 const API_ENDPOINT = '/api';
 
 /**
@@ -22,6 +23,20 @@ class SessionStore extends EventEmitter {
     }.bind(this));
 
     this.configureAuth();
+
+    Dispatcher.register(this.handleDispatcherActions.bind(this));
+  }
+
+  handleDispatcherActions(action) {
+    switch(action.actionType) {
+      case SessionContstants.SESSION_CREATE:
+        this.login(action.email, action.password);
+      break;
+
+      case SessionContstants.SESSION_DESTROY:
+        this.logout();
+      break;
+    }
   }
 
   /**
@@ -29,6 +44,14 @@ class SessionStore extends EventEmitter {
   **/
   login(email, password) {
     return Auth.emailSignIn({ email, password });
+  }
+
+  /**
+  * Logouts current user
+  */
+  logout() {
+    this.setUser(null);
+    return Auth.signOut();
   }
 
   /**

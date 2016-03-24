@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User sign in', js: true do
   let(:auth_path) { '/auth' }
   let(:sign_in_button) { 'Sign in' }
+  let(:logout_button) { 'Logout' }
   let(:email_label) { 'E-mail' }
   let(:password_label) { 'Password' }
 
@@ -10,10 +11,15 @@ feature 'User sign in', js: true do
     as_user(:user)
 
     scenario 'after i visit root path i should not be redirected to /auth' do
-      user = create(:user)
       visit root_path
-      expect(page).not_to have_content(sign_in_button)
+      expect(page).to have_content(logout_button)
       expect(current_path).to eq(root_path)
+    end
+
+    scenario 'i should be able to sign out' do
+      visit root_path
+      click_on(logout_button)
+      expect(page).to have_content(sign_in_button)
     end
 
   end
@@ -54,7 +60,7 @@ feature 'User sign in', js: true do
       fill_in password_label, with: user.password
 
       click_on(sign_in_button)
-      expect(page).not_to have_content(sign_in_button)
+      expect(page).to have_content(logout_button)
       expect(current_path).to eq(root_path)
     end
   end

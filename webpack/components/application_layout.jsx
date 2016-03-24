@@ -1,6 +1,5 @@
 import React from 'react';
-import SessionStore from '../stores/session_store.jsx';
-
+import LogoutButton from './ui/logout_button.jsx';
 /**
 * This component contains whole ui
 **/
@@ -13,6 +12,7 @@ export default class ApplicationLayout extends React.Component {
   render() {
     return <div>
       <h1>App</h1>
+      <LogoutButton />
       {this.props.children}
     </div>
   }
