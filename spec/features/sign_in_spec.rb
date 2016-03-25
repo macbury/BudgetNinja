@@ -22,6 +22,10 @@ feature 'User sign in', js: true do
       expect(page).to have_content(sign_in_button)
     end
 
+    scenario 'i should be redirected to root_path from /auth' do
+      visit auth_path
+      expect(page).to have_content(logout_button)
+    end
   end
 
   context 'as guest' do

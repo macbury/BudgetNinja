@@ -1,0 +1,6 @@
+@import "../bootstrap.scss";
+
+.normal {
+  @extend .btn;
+  @extend .btn-default;
+}

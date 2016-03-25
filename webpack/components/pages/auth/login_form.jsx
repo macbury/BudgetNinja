@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '../../ui/text_field.jsx';
 import SessionStore from '../../../stores/session_store.jsx';
 import SessionActions from '../../../actions/session_actions';
+import FlashActions from '../../../actions/flash_actions';
 import Dispatcher from '../../../lib/dispatcher';
 import SessionContstants from '../../../constants/session_constants';
 /**

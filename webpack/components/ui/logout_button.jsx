@@ -3,6 +3,7 @@ import SessionStore from '../../stores/session_store.jsx';
 import SessionActions from '../../actions/session_actions';
 import SessionConstants from '../../constants/session_constants';
 import Dispatcher from '../../lib/dispatcher';
+import Styles from './logout_button.scss';
 
 /**
 * This logout user and redirect to /auth page
@@ -41,7 +42,7 @@ export default class LogoutButton extends React.Component {
   }
 
   render() {
-    return <button onClick={this.onLogoutClick.bind(this)} disabled={this.state.loading}>Logout</button>;
+    return <button className={Styles.normal} onClick={this.onLogoutClick.bind(this)} disabled={this.state.loading}>Logout</button>;
   }
 }
 
