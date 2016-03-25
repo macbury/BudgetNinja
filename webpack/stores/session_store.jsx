@@ -29,36 +29,14 @@ class SessionStore extends EventEmitter {
 
   handleDispatcherActions(action) {
     switch(action.actionType) {
-      case SessionContstants.SESSION_CREATE:
-        this.login(action.email, action.password);
+      case SessionContstants.SESSION_CREATE_SUCCESS:
+        this.setUser(Auth.user);
       break;
 
-      case SessionContstants.SESSION_DESTROY:
-        this.logout();
+      case SessionContstants.SESSION_DESTROY_SUCCESS:
+        this.setUser(null);
       break;
     }
-  }
-
-  /**
-  * Log in user using, email and password. Returns promise object with success callback, and error callback
-  **/
-  login(email, password) {
-    return Auth.emailSignIn({ email, password });
-  }
-
-  /**
-  * Logouts current user
-  */
-  logout() {
-    this.setUser(null);
-    return Auth.signOut();
-  }
-
-  /**
-  * Register new user using params
-  */
-  register(options) {
-    return Auth.emailSignUp(options);
   }
 
   /**

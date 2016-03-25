@@ -1,7 +1,9 @@
 import React from 'react';
 import TextField from '../../ui/text_field.jsx';
 import SessionStore from '../../../stores/session_store.jsx';
-
+import SessionActions from '../../../actions/session_actions';
+import Dispatcher from '../../../lib/dispatcher';
+import SessionContstants from '../../../constants/session_constants';
 /**
 * Show form that allows user to log in
 **/
@@ -16,12 +18,33 @@ export default class LoginForm extends React.Component {
     };
   }
 
-  /**
-  * Redirect to last path or to root path
-  */
-  onSignInSuccess(result) {
+  componentWillMount() {
+    this.registerToken = Dispatcher.register(this.onEvents.bind(this));
+  }
+
+  componentWillUnmount() {
+    Dispatcher.unregister(this.registerToken);
+  }
+
+  onEvents(action) {
+    switch(action.actionType) {
+      case SessionContstants.SESSION_CREATE:
+        this.setState({ loading: true, error: null });
+      break;
+
+      case SessionContstants.SESSION_CREATE_SUCCESS:
+        this.redirectBackToPageOrToRoot();
+      break;
+
+      case SessionContstants.SESSION_CREATE_FAILURE:
+        this.setState({ loading: false, error: action.error });
+      break;
+    }
+  }
+
+  redirectBackToPageOrToRoot() {
     const { location } = this.props
-    this.setState({ loading: true, error: null });
+
     if (location != null && location.state != null && location.state.nextPathname) {
       this.context.router.replace(location.state.nextPathname);
     } else {
@@ -29,16 +52,9 @@ export default class LoginForm extends React.Component {
     }
   }
 
-  onSignInFailure(result) {
-    console.log("error", result);
-    this.setState({ loading: false, error: result.reason });
-  }
-
   signIn(e) {
     e.preventDefault();
-    var form = this.state;
-    this.setState({ loading: true, error: null });
-    SessionStore.login(form.email, form.password).then(this.onSignInSuccess.bind(this)).fail(this.onSignInFailure.bind(this));
+    SessionActions.create(this.state.email, this.state.password);
   }
 
   onEmailFieldChange(event) {
