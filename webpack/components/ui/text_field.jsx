@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './text_field.scss';
-console.log(styles);
+
 /**
 * Render bootstrap 3 styled input
 **/

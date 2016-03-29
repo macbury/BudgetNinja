@@ -58,10 +58,16 @@ var config = {
       },
       // prepare source map for css
       { test: /\.scss$/, loader: scssLoader },
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=i-[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      },
       // Load font for bootstrap sass
       { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
-      { test: /\.(ttf|eot|svg|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
+      { test: /\.(ttf|eot|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
     ]
   },
 
@@ -103,7 +109,7 @@ if (production) {
     port: devServerPort,
     headers: { 'Access-Control-Allow-Credentials': 'true' , 'Access-Control-Allow-Origin': 'http://budget-ninja.local' }
   };
-  config.output.publicPath = '//0.0.0.0:' + devServerPort + '/webpack/';
+  config.output.publicPath = 'http://0.0.0.0:' + devServerPort + '/webpack/';
   // Source maps
   config.devtool = 'source-map';
 }

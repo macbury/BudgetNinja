@@ -5,7 +5,8 @@
 */
 .auth_container {
   @extend .container;
-  margin-top: 120px;
+  padding-top: 140px;
+  background: transparent url(images/purse.png) center 10px no-repeat;
 }
 
 .col_sign_in, .col_sign_up {
