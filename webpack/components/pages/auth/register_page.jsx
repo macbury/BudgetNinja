@@ -12,6 +12,7 @@ export default class RegisterPage extends React.Component {
     super();
     this.state = {
       loading: false,
+      validations: {}
     }
   }
 
@@ -39,7 +40,7 @@ export default class RegisterPage extends React.Component {
   onEvents(action) {
     switch(action.actionType) {
       case RegistrationConstants.REGISTRATION_CREATE:
-        this.setState({ loading: true, error: null });
+        this.setState({ loading: true, error: null, validations: {} });
       break;
 
       case RegistrationConstants.REGISTRATION_CREATE_SUCCESS:
@@ -47,7 +48,7 @@ export default class RegisterPage extends React.Component {
       break;
 
       case RegistrationConstants.REGISTRATION_CREATE_FAILURE:
-        this.setState({ loading: false, error: action.error });
+        this.setState({ loading: false, error: action.error, validations: action.validations });
       break;
     }
   }
@@ -71,9 +72,9 @@ export default class RegisterPage extends React.Component {
       <div className={styles.row}>
         <div className={styles.col_sign_up}>
           <form disabled={this.state.loading} onSubmit={this.handleFormSubmit.bind(this)}>
-            <TextField label="E-mail:" name='email' value={this.state.email} type="email" disabled={this.state.loading} onChange={this.onEmailChange.bind(this)} />
-            <TextField label="Password:" name='password' value={this.state.password} type="password" disabled={this.state.loading} onChange={this.onPasswordChange.bind(this)} />
-            <TextField label="Confirm password:" name='password_confirmation' value={this.state.password_confirmation} type="password" disabled={this.state.loading}  onChange={this.onPasswordConfirmationChange.bind(this)} />
+            <TextField label="E-mail:" name='email' error={this.state.validations.email} value={this.state.email} type="email" disabled={this.state.loading} onChange={this.onEmailChange.bind(this)} />
+            <TextField label="Password:" name='password' error={this.state.validations.password} value={this.state.password} type="password" disabled={this.state.loading} onChange={this.onPasswordChange.bind(this)} />
+            <TextField label="Confirm password:" name='password_confirmation' error={this.state.validations.password_confirmation} value={this.state.password_confirmation} type="password" disabled={this.state.loading}  onChange={this.onPasswordConfirmationChange.bind(this)} />
             <button disabled={this.state.loading} className={ styles.register_button }>Register</button>
             <p>
               <Link to="/login" className={ styles.login_link }>Login</Link>

@@ -1,1 +1,18 @@
 @import "../bootstrap.scss";
+
+.label {
+  @extend .control-label;
+}
+
+.normal {
+  @extend .form-group;
+}
+
+.error {
+  @extend .form-group;
+  @extend .has-error;
+}
+
+.help {
+  @extend .help-block;
+}

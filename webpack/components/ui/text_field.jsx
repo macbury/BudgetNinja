@@ -21,10 +21,11 @@ export default class TextField extends React.Component {
   }
 
   render() {
-    var errorSpan = this.props.error !== null ? <span>{ this.props.error }</span> : null;
+    var errorSpan  = this.props.error != null ? <div className={styles.help}>{ this.props.error }</div> : null;
+    var errorClass = this.props.error != null ? styles.error : styles.normal;
 
-    return <div className={ styles['form-group'] }>
-      <label for={this.props.name}>{ this.props.label }</label>
+    return <div className={ errorClass }>
+      <label for={this.props.name} className={ styles.label }>{ this.props.label }</label>
       <input type={this.props.type} className={ styles['form-control'] } id={this.props.name} name={this.props.name} value={this.props.value} onChange={this.props.onChange} disabled={this.props.disabled} />
       { errorSpan }
     </div>;
