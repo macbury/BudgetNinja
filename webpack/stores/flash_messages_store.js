@@ -5,6 +5,8 @@ import SessionConstants from '../constants/session_constants';
 /**
 * This store contains all flash messages sended by application
 */
+
+const FLASH_TIMEOUT = 2000;
 class FlashMessagesStore extends EventEmitter {
   constructor() {
     super();
@@ -30,7 +32,7 @@ class FlashMessagesStore extends EventEmitter {
         this.flashes.splice(index, 1);
       }
       this.emit('change');
-    }, 1000);
+    }, FLASH_TIMEOUT);
   }
 
   getFlashes() {
@@ -47,7 +49,7 @@ class FlashMessagesStore extends EventEmitter {
   onAction(action) {
     switch (action.actionType) {
       case FlashMessageConstants.FLASH_NOTICE:
-        this.addFlash('notice', action.message);
+        this.addFlash('success', action.message);
       break;
 
       case FlashMessageConstants.FLASH_ERROR:
@@ -55,7 +57,7 @@ class FlashMessagesStore extends EventEmitter {
       break;
 
       case SessionConstants.SESSION_CREATE_SUCCESS:
-        this.addFlash('notice', 'Signed in.');
+        this.addFlash('success', 'Signed in.');
       break;
 
       case SessionConstants.SESSION_CREATE_FAILURE:
@@ -63,7 +65,7 @@ class FlashMessagesStore extends EventEmitter {
       break;
 
       case SessionConstants.SESSION_DESTROY_SUCCESS:
-        this.addFlash('notice', 'Signed out.');
+        this.addFlash('success', 'Signed out.');
       break;
     }
   }

@@ -1,11 +1,15 @@
 import React from 'react';
 import FlashMessagesStore from '../../stores/flash_messages_store';
-
+import styles from './flash_messages.scss';
 //TODO style like this http://bootsnipp.com/snippets/AVX7K
+
+
 
 class FlashMessage extends React.Component {
   render() {
-    return <p>{ this.props.message }</p>;
+    return <div className={styles['notice_'+this.props.type]}>
+      { this.props.message }
+    </div>;
   }
 }
 
@@ -38,6 +42,6 @@ export default class FlashMessages extends React.Component {
     const FlashComponents = this.state.messages.map((flash_message) => {
       return <FlashMessage key={flash_message.id} {...flash_message} />
     });
-    return <div>{ FlashComponents }</div>;
+    return <div className={styles.container}>{ FlashComponents }</div>;
   }
 }
