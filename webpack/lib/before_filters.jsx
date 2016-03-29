@@ -6,7 +6,7 @@ import SessionStore from './../stores/session_store.jsx';
 function ensureUserIsLoggedIn(nextState, replaceState) {
   if (!SessionStore.isLoggedIn()) {
     replaceState({
-      pathname: '/auth',
+      pathname: '/login',
       state: { nextPathname: nextState.location.pathname }
     });
   }

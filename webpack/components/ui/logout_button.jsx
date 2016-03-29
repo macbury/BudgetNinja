@@ -27,11 +27,11 @@ export default class LogoutButton extends React.Component {
     switch(action.actionType) {
       case SessionConstants.SESSION_DESTROY:
         this.setState({ loading: true });
-        this.context.router.replace('/auth');
+        this.context.router.replace('/login');
       break;
 
       case SessionConstants.SESSION_DESTROY_SUCCESS:
-        this.context.router.replace('/auth');
+        this.context.router.replace('/login');
       break;
     }
   }

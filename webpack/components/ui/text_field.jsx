@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './text_field.scss';
+console.log(styles);
 /**
 * Render bootstrap 3 styled input
 **/
@@ -22,9 +23,9 @@ export default class TextField extends React.Component {
   render() {
     var errorSpan = this.props.error !== null ? <span>{ this.props.error }</span> : null;
 
-    return <div className="form-group">
+    return <div className={ styles['form-group'] }>
       <label for={this.props.name}>{ this.props.label }</label>
-      <input type={this.props.type} className="form-control" id={this.props.name} name={this.props.name} value={this.props.value} onChange={this.props.onChange} disabled={this.props.disabled} />
+      <input type={this.props.type} className={ styles['form-control'] } id={this.props.name} name={this.props.name} value={this.props.value} onChange={this.props.onChange} disabled={this.props.disabled} />
       { errorSpan }
     </div>;
   }

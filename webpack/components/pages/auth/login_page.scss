@@ -1,0 +1,28 @@
+@import "../../bootstrap.scss";
+
+/**
+* Container in which all login and registration form are placed
+*/
+.auth_container {
+  @extend .container;
+  margin-top: 120px;
+}
+
+.col_sign_in, .col_sign_up {
+  @extend .col-sm-6;
+  @extend .col-sm-offset-3;
+}
+
+.sign_in_button, .register_button  {
+  @extend .btn;
+  @extend .btn-success;
+  @extend .btn-lg;
+  @extend .btn-block;
+}
+
+.register_link, .login_link {
+  @extend .btn;
+  @extend .btn-default;
+  @extend .btn-lg;
+  @extend .btn-block;
+}

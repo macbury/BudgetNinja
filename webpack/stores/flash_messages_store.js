@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import Dispatcher from '../lib/dispatcher';
 import FlashMessageConstants from '../constants/flash_message_constants';
 import SessionConstants from '../constants/session_constants';
+import RegistrationConstants from '../constants/registration_constants';
 /**
 * This store contains all flash messages sended by application
 */
@@ -57,15 +58,23 @@ class FlashMessagesStore extends EventEmitter {
       break;
 
       case SessionConstants.SESSION_CREATE_SUCCESS:
-        this.addFlash('success', 'Signed in.');
+        this.addFlash('success', 'Signed in successfully.');
       break;
 
       case SessionConstants.SESSION_CREATE_FAILURE:
-        this.addFlash('error', 'Cannot sign in');
+        this.addFlash('error', 'Cannot sign in: ' + action.error);
       break;
 
       case SessionConstants.SESSION_DESTROY_SUCCESS:
-        this.addFlash('success', 'Signed out.');
+        this.addFlash('success', 'Signed out successfully.');
+      break;
+
+      case RegistrationConstants.REGISTRATION_CREATE_FAILURE:
+        this.addFlash('error', 'Cannot create new account: ' + action.error);
+      break;
+
+      case RegistrationConstants.REGISTRATION_CREATE_SUCCESS:
+        this.addFlash('success', 'Created new account! You can now log in!');
       break;
     }
   }

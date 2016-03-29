@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User sign in', js: true do
-  let(:auth_path) { '/auth' }
+  let(:auth_path) { '/login' }
   let(:sign_in_button) { 'Sign in' }
   let(:logout_button) { 'Logout' }
   let(:email_label) { 'E-mail' }

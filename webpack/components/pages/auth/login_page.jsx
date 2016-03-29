@@ -2,13 +2,14 @@ import React from 'react';
 import TextField from '../../ui/text_field.jsx';
 import SessionStore from '../../../stores/session_store.jsx';
 import SessionActions from '../../../actions/session_actions';
-import FlashActions from '../../../actions/flash_actions';
 import Dispatcher from '../../../lib/dispatcher';
 import SessionContstants from '../../../constants/session_constants';
+import { Link } from 'react-router';
+import styles from './login_page.scss';
 /**
 * Show form that allows user to log in
 **/
-export default class LoginForm extends React.Component {
+export default class LoginPage extends React.Component {
 
   constructor() {
     super();
@@ -67,15 +68,23 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
-    return <form onSubmit={this.signIn.bind(this)} disabled={this.state.loading}>
-      <TextField label="E-mail:" name='email' value={this.state.email} type="email" onChange={this.onEmailFieldChange.bind(this)} disabled={this.state.loading} />
-      <TextField label="Password:" name='password' value={this.state.password} type="password" onChange={this.onPasswordFieldChange.bind(this)} disabled={this.state.loading} />
-      <button disabled={this.state.loading}>Sign in</button>
-      <p>{ this.state.error }</p>
-    </form>;
+    return <div className={styles.auth_container}>
+      <div className={styles.row}>
+        <div className={styles.col_sign_in}>
+          <form onSubmit={this.signIn.bind(this)} disabled={this.state.loading}>
+            <TextField label="E-mail:" name='email' value={this.state.email} type="email" onChange={this.onEmailFieldChange.bind(this)} disabled={this.state.loading} />
+            <TextField label="Password:" name='password' value={this.state.password} type="password" onChange={this.onPasswordFieldChange.bind(this)} disabled={this.state.loading} />
+            <button disabled={this.state.loading} className={ styles.sign_in_button }>Sign in</button>
+            <p>
+              <Link to="/register" className={ styles.register_link }>Register</Link>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>;
   }
 }
 
-LoginForm.contextTypes = {
+LoginPage.contextTypes = {
   router: React.PropTypes.object.isRequired
 };

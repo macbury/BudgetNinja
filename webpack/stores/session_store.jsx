@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import Auth from 'j-toker';
-import PubSub from 'pubsub-js';
 import Dispatcher from '../lib/dispatcher';
+import PubSub from 'pubsub-js';
 import SessionContstants from '../constants/session_constants';
 const API_ENDPOINT = '/api';
 
@@ -73,5 +73,4 @@ class SessionStore extends EventEmitter {
 }
 
 const sessionStore  = new SessionStore();
-window.sessionStore = sessionStore;
 export default sessionStore;
