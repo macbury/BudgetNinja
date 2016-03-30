@@ -84,6 +84,8 @@ end
 # * :root - an alternate application root
 guard :foreman do
   watch( /Procfile/ )
+  watch( /package\.json/ )
+  watch( /config\/webpack\.config\.js/ )
 end
 
 # Add files and commands to this file, like the example:

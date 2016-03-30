@@ -1,5 +1,6 @@
 import React from 'react';
 import LogoutButton from './ui/logout_button.jsx';
+import NavigationBar from './ui/navbar.jsx';
 /**
 * This component contains whole ui
 **/
@@ -11,7 +12,7 @@ export default class ApplicationLayout extends React.Component {
 
   render() {
     return <div>
-      <h1>App</h1>
+      <NavigationBar />
       <LogoutButton />
       {this.props.children}
     </div>

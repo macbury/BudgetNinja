@@ -7,9 +7,10 @@ import ApplicationLayout from './components/application_layout.jsx'
 import LoginPage from './components/pages/auth/login_page.jsx';
 import RegisterPage from './components/pages/auth/register_page.jsx';
 import NotFound from './components/pages/not_found_page.js';
-import Layout from './components/layout';
 import Session from './components/session.jsx';
+import ProfileSelect from './components/profile_select.jsx';
 import FlashMessages from './components/ui/flash_messages.jsx';
+import Budget from './components/pages/budget.jsx';
 
 import { browserHistory, Router, Route, IndexRoute } from "react-router";
 
@@ -25,14 +26,16 @@ ReactDom.render((
   <div>
     <FlashMessages />
     <Session>
-      <Router history={browserHistory} >
-        <Route path='/login' component={LoginPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
-        <Route path='/register' component={RegisterPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
-        <Route path='/' component={ApplicationLayout} onEnter={BeforeFilter.ensureUserIsLoggedIn}>
-          <IndexRoute component={Layout} />
-          <Route path="*" component={NotFound} />
-        </Route>
-      </Router>
+      <ProfileSelect>
+        <Router history={browserHistory} >
+          <Route path='/login' component={LoginPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
+          <Route path='/register' component={RegisterPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
+          <Route path='/' component={ApplicationLayout} onEnter={BeforeFilter.ensureUserIsLoggedIn}>
+            <IndexRoute component={Budget} />
+            <Route path="*" component={NotFound} />
+          </Route>
+        </Router>
+      </ProfileSelect>
     </Session>
   </div>
 ), appContainer);
