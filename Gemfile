@@ -38,6 +38,7 @@ group :development, :test do
   gem 'show_me_the_cookies'
   gem 'travis', require: false
   gem 'rubocop', require: false
+  gem 'json_spec'
 end
 
 group :development do

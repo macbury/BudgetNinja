@@ -21,3 +21,16 @@ module FeatureDevise
   end
 
 end
+
+
+module ControllerDevise
+  # Creates current_user with passed argumens
+  def as_user(*args)
+    let(:current_user) { FactoryGirl.create(*args) }
+    let(:auth_headers) { current_user.create_new_auth_token }
+    before(:each) do
+      sign_in(current_user)
+      request.headers.merge!(auth_headers)
+    end
+  end
+end
