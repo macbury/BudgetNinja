@@ -4,16 +4,24 @@ describe Api::ProfilesController, type: :controller do
 
   context 'as logged in user' do
     as_user(:user)
-    it 'should return list of profiles for index action' do
-      get :index
-      expect(response).to be_success
-      expect(response.body).to have_json_size(1)
+
+    context 'GET /' do
+      before { xhr(:get, :index) }
+      subject(:response_json) { response.body }
+      it 'should be success' do
+        expect(response).to be_success
+      end
+
+      it { should have_json_size(1).at_path('profiles') }
+      it { should have_json_type(Integer).at_path('profiles/0/id') }
+      it { should have_json_type(Integer).at_path('profiles/0/account_id') }
+      it { should have_json_type(String).at_path('profiles/0/name') }
     end
   end
 
   context 'as guest' do
     it 'should return error that user is not authorized for index action' do
-      get :index
+      xhr(:get, :index)
       expect(response).not_to be_success
     end
   end

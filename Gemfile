@@ -21,6 +21,7 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'cancan'
 gem 'shoulda-matchers'
 gem 'slim-rails'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'guard-foreman'
