@@ -23,10 +23,10 @@ class ProfileActions {
   }
 
   /**
-  * set current profile by its id
+  * set current profile
   */
-  setCurrent(profileId) {
-    Dispatcher.dispatch({ actionType: Constants.PROFILES_FETCH, profileId: profileId });
+  setCurrent(profile) {
+    Dispatcher.dispatch({ actionType: Constants.PROFILES_SET, profile: profile });
   }
 }
 

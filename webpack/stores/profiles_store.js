@@ -8,7 +8,6 @@ const COOKIE_OPTIONS             = {
   path: '/'
 };
 const CHANGE_EVENT = 'change';
-
 /**
 * Here are stored all profiles that user have, and additionaly it contains current profile selected by user
 **/
@@ -29,6 +28,11 @@ class ProfilesStore extends EventEmitter {
 
       case ProfileContstants.PROFILES_FETCH_SUCCESS:
         this.profiles = action.profiles;
+        this.emit(CHANGE_EVENT);
+      break;
+
+      case ProfileContstants.PROFILES_SET:
+        this.setCurrentProfile(action.profile);
         this.emit(CHANGE_EVENT);
       break;
     }
@@ -55,7 +59,10 @@ class ProfilesStore extends EventEmitter {
   }
 
   getCurrentProfile() {
-    return cookie.load(COOKIE_SELECTED_PROFILE_ID);
+    if (this.currentProfile == null) {
+      this.currentProfile = cookie.load(COOKIE_SELECTED_PROFILE_ID);
+    }
+    return this.currentProfile;
   }
 
   getAll() {
