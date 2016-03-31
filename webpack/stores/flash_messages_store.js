@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import Dispatcher from '../lib/dispatcher';
 import FlashMessageConstants from '../constants/flash_message_constants';
 import SessionConstants from '../constants/session_constants';
+import ProfileConstants from '../constants/profiles_constants';
 import RegistrationConstants from '../constants/registration_constants';
 /**
 * This store contains all flash messages sended by application
@@ -67,6 +68,10 @@ class FlashMessagesStore extends EventEmitter {
 
       case SessionConstants.SESSION_DESTROY_SUCCESS:
         this.addFlash('success', 'Signed out successfully.');
+      break;
+
+      case ProfileConstants.PROFILES_FETCH_FAILURE:
+        this.addFlash('error', 'Cannot fetch profiles: ' + action.error);
       break;
 
       case RegistrationConstants.REGISTRATION_CREATE_FAILURE:
