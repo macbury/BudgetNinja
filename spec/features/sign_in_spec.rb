@@ -20,7 +20,7 @@ feature 'User sign in', js: true do
     scenario 'i should be able to sign out' do
       visit root_path
       click_on(current_user.profiles.first.name)
-      click_on(logout_button)
+      click_on_logout
       expect(page).to have_content(sign_in_button)
     end
 
