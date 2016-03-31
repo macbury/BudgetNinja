@@ -1,0 +1,15 @@
+@import "../bootstrap.scss";
+
+.toolbar {
+  @extend .navbar;
+  @extend .navbar-default;
+  @extend .navbar-static-top;
+}
+
+.toolbar_inner {
+  @extend .fluid-container;
+}
+
+.brand {
+  @extend .navbar-brand;
+}

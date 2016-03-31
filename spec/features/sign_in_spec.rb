@@ -6,25 +6,27 @@ feature 'User sign in', js: true do
   let(:logout_button) { 'Logout' }
   let(:email_label) { 'E-mail' }
   let(:password_label) { 'Password' }
+  let(:select_profile_header) { 'Select your profile' }
 
   context 'as logged in user' do
     as_user(:user)
 
     scenario 'after i visit root path i should not be redirected to /auth' do
       visit root_path
-      expect(page).to have_content(logout_button)
+      expect(page).to have_content(select_profile_header)
       expect(current_path).to eq(root_path)
     end
 
     scenario 'i should be able to sign out' do
       visit root_path
+      click_on(current_user.profiles.first.name)
       click_on(logout_button)
       expect(page).to have_content(sign_in_button)
     end
 
     scenario 'i should be redirected to root_path from /auth' do
       visit auth_path
-      expect(page).to have_content(logout_button)
+      expect(page).to have_content(select_profile_header)
     end
   end
 
@@ -64,7 +66,7 @@ feature 'User sign in', js: true do
       fill_in password_label, with: user.password
 
       click_on(sign_in_button)
-      expect(page).to have_content(logout_button)
+      expect(page).to have_content(select_profile_header)
       expect(current_path).to eq(root_path)
     end
   end

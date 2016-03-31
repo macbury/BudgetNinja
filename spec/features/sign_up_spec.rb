@@ -8,7 +8,7 @@ feature 'User sign up', js: true do
   let(:password_confirmation_label) { 'Confirm password' }
   let(:sign_up_button) { 'Register' }
   let(:success_sign_up_flash_message) { 'Created new account! You can now log in!' }
-
+  let(:select_profile_header) { 'Select your profile' }
   context 'as guest' do
     as_guest
 
@@ -46,7 +46,7 @@ feature 'User sign up', js: true do
 
     scenario 'i should be redirected to root_path from /auth' do
       visit auth_path
-      expect(page).to have_content(logout_button)
+      expect(page).to have_content(select_profile_header)
     end
   end
 end

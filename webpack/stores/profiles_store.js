@@ -3,9 +3,11 @@ import Dispatcher from '../lib/dispatcher';
 import SessionContstants from '../constants/session_constants';
 import ProfileContstants from '../constants/profiles_constants';
 import cookie from 'react-cookie';
+import moment from 'moment';
 const COOKIE_SELECTED_PROFILE_ID = 'COOKIE_SELECTED_PROFILE_ID';
 const COOKIE_OPTIONS             = {
-  path: '/'
+  path: '/',
+  expires: moment().add(7, 'days')._d
 };
 const CHANGE_EVENT = 'change';
 /**

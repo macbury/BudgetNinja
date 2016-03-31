@@ -1,6 +1,5 @@
-import React from "react";
 import ReactDom from "react-dom";
-
+import React from 'react';
 import BeforeFilter from './lib/before_filters.jsx';
 
 import ApplicationLayout from './components/application_layout.jsx'
