@@ -12,10 +12,11 @@ export default class ApplicationLayout extends React.Component {
   }
 
   render() {
-    return <ProfileSelect>
-      <NavigationBar />
-      <LogoutButton />
-      {this.props.children}
-    </ProfileSelect>
+    return (
+      <ProfileSelect>
+        <NavigationBar />
+        {this.props.children}
+      </ProfileSelect>
+    );
   }
 }
