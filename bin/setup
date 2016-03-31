@@ -24,6 +24,9 @@ Dir.chdir APP_ROOT do
   system "rm -f log/*"
   system "rm -rf tmp/cache"
 
+  puts "Preparing node stuff"
+  system "npm install"
   puts "\n== Restarting application server =="
   system "touch tmp/restart.txt"
+
 end
