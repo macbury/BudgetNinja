@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileActions from '../../actions/profile_actions';
 
+import styles from './profiles.scss';
 /**
 * Shows simple link avatar for profile
 */
@@ -12,6 +13,6 @@ export default class ProfileOption extends React.Component {
   }
 
   render() {
-    return <a href="#" onClick={this.onProfileClick.bind(this)}>{this.props.name}</a>;
+    return <a href="#" className={ styles.profile_option } onClick={this.onProfileClick.bind(this)}>{this.props.name}</a>;
   }
 }

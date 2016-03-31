@@ -5,7 +5,8 @@ import ProfileActions from '../../actions/profile_actions';
 import ProfileConstants from '../../constants/profiles_constants';
 
 import ProfileOption from './profile_option.jsx';
-import LogoutButton from '../ui/logout_button.jsx';
+
+import styles from './profiles.scss';
 /**
 * Show profile select after user logs in if user did not  select any profile yet
 */
@@ -47,9 +48,13 @@ export default class ProfileSelect extends React.Component {
   render() {
     if (this.state.selectedProfileId == null && this.state.loggedIn) {
       if (this.state.profiles != null) {
-        return <div>
-          { this.getListOfProfileOptions() }
-          <LogoutButton />
+        return <div className={ styles.profile_container }>
+          <div className={ styles.col_profiles_select }>
+            <h2>Select your profile</h2>
+            <div className={ styles.profiles_select_group }>
+              { this.getListOfProfileOptions() }
+            </div>
+          </div>
         </div>
       } else {
         return <div>Loading profiles...</div>

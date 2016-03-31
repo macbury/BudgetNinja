@@ -1,12 +1,23 @@
 // Setup base bootstrap theme with minimum content
 $icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/"; // Without this webpack will be searching fonts in strange places
 
+// Core variables and mixins
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables.scss";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins.scss";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize.scss";
 
+// Core CSS
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding.scss";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid.scss";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/forms.scss";
-
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/buttons.scss";
+
+// Components
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/navs";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/navbar";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/badges";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/close";

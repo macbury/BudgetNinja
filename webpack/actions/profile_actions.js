@@ -23,6 +23,13 @@ class ProfileActions {
   }
 
   /**
+  * Resets current selected profile
+  **/
+  reset() {
+    Dispatcher.dispatch({ actionType: Constants.PROFILES_RESET });
+  }
+
+  /**
   * set current profile
   */
   setCurrent(profile) {

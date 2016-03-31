@@ -35,6 +35,11 @@ class ProfilesStore extends EventEmitter {
         this.setCurrentProfile(action.profile);
         this.emit(CHANGE_EVENT);
       break;
+
+      case ProfileContstants.PROFILES_RESET:
+        this.setCurrentProfile(null);
+        this.emit(CHANGE_EVENT);
+      break;
     }
   }
 

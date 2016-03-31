@@ -13,26 +13,29 @@ import Budget from './components/pages/budget.jsx';
 
 import { browserHistory, Router, Route, IndexRoute } from "react-router";
 
-/**
-* Where to insert application in DOM
-**/
-const appContainer = document.getElementById('app-container');
 
-/**
-* Prepare routes
-*/
-ReactDom.render((
-  <div>
-    <FlashMessages />
-    <Session>
-      <Router history={browserHistory} >
-        <Route path='/login' component={LoginPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
-        <Route path='/register' component={RegisterPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
-        <Route path='/' component={ApplicationLayout} onEnter={BeforeFilter.ensureUserIsLoggedIn}>
-          <IndexRoute component={Budget} />
-          <Route path="*" component={NotFound} />
-        </Route>
-      </Router>
-    </Session>
-  </div>
-), appContainer);
+window.onload = function() {
+  /**
+  * Where to insert application in DOM
+  **/
+  const appContainer = document.getElementById('app-container');
+
+  /**
+  * Prepare routes
+  */
+  ReactDom.render((
+    <div>
+      <FlashMessages />
+      <Session>
+        <Router history={browserHistory} >
+          <Route path='/login' component={LoginPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
+          <Route path='/register' component={RegisterPage} onEnter={BeforeFilter.ensureUserIsLoggedOut} />
+          <Route path='/' component={ApplicationLayout} onEnter={BeforeFilter.ensureUserIsLoggedIn}>
+            <IndexRoute component={Budget} />
+            <Route path="*" component={NotFound} />
+          </Route>
+        </Router>
+      </Session>
+    </div>
+  ), appContainer);
+}

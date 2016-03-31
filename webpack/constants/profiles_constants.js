@@ -5,4 +5,5 @@ export default keyMirror({
   PROFILES_FETCH_SUCCESS: null,
   PROFILES_FETCH_FAILURE: null,
   PROFILES_SET: null,
+  PROFILES_RESET: null,
 });
