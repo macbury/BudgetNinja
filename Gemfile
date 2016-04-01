@@ -25,6 +25,7 @@ gem 'active_model_serializers'
 
 group :development, :test do
   gem 'guard-foreman'
+  gem 'annotate'
   gem 'foreman'
   gem 'rspec-rails'
   gem 'faker'

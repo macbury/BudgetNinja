@@ -11,6 +11,7 @@ AllCops:
     - 'config/**/*'
     - 'Guardfile'
     - 'node_modules/**/*'
+    - lib/tasks/auto_annotate_models.rake
 
 LineLength:
   Enabled: false
