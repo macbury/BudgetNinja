@@ -2,6 +2,7 @@ import React from 'react';
 import LogoutButton from './ui/logout_button.jsx';
 import NavigationBar from './ui/navbar.jsx';
 import ProfileSelect from './profiles/profile_select.jsx';
+
 /**
 * This component contains whole ui
 **/

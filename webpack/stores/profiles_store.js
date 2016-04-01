@@ -72,6 +72,11 @@ class ProfilesStore extends EventEmitter {
     return this.currentProfile;
   }
 
+  getCurrentProfileName() {
+    var currentProf = this.getCurrentProfile();
+    return currentProf == null ? null : currentProf.name;
+  }
+
   getAll() {
     return this.profiles;
   }

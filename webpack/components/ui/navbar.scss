@@ -6,6 +6,7 @@ $hamburger_margin: 10px;
   @extend .navbar;
   @extend .navbar-default;
   @extend .navbar-static-top;
+  margin-bottom: 0px;
 }
 
 .toolbar_inner {

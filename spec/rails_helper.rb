@@ -43,6 +43,7 @@ RSpec.configure do |config|
   config.include ShowMeTheCookies, type: :feature
   config.include FactoryGirl::Syntax::Methods
   config.extend FeatureDevise, type: :feature
+  config.extend ProfileSupport, type: :feature
   config.include UISupport, type: :feature
   config.extend ControllerDevise, type: :controller
   config.include(ScreenshotSupport, type: :feature)
