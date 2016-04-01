@@ -22,14 +22,14 @@
 
 FactoryGirl.define do
   factory :income do
-    amount 100
+    amount { rand * 1000 }
     note ""
     user
     account { |i| i.user.accounts.first }
   end
 
   factory :expense do
-    amount -100
+    amount { rand * -1000 }
     note ""
     user
     account { |i| i.user.accounts.first }

@@ -28,4 +28,25 @@ RSpec.describe Account, type: :model do
   it { should validate_presence_of(:name) }
   it { should validate_uniqueness_of(:name).scoped_to(:user_id) }
   it { should validate_presence_of(:balance_cents) }
+
+  context 'balance' do
+    subject(:account) { create(:account) }
+    let(:user) { account.user }
+    it 'should be substracted by expense' do
+      create(:expense, account_id: account.id, user_id: user.id, amount: -1000)
+      expect(account.reload.balance.to_i).to eq(-1000)
+    end
+
+    it 'should add income' do
+      create(:income, account_id: account.id, user_id: user.id, amount: 1000)
+      expect(account.reload.balance.to_i).to eq(1000)
+    end
+
+    it 'should allow multiple expenses/incomes' do
+      create(:income, account_id: account.id, user_id: user.id, amount: 1000)
+      create(:expense, account_id: account.id, user_id: user.id, amount: -100)
+      create(:expense, account_id: account.id, user_id: user.id, amount: -300)
+      expect(account.reload.balance.to_i).to eq(600)
+    end
+  end
 end

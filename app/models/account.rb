@@ -32,6 +32,12 @@ class Account < ActiveRecord::Base
 
   before_destroy :validate_if_is_last_account?
 
+  # Update account balance using all operations
+  def recalculate_balance!
+    self.balance = operations.sum(:amount_cents)
+    update_column(:balance_cents, balance)
+  end
+
   private
 
   def validate_if_is_last_account?

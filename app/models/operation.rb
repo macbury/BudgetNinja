@@ -23,7 +23,7 @@
 # Base operation class for Income and Expenses
 class Operation < ActiveRecord::Base
   belongs_to :profile
-  belongs_to :account
+  belongs_to :account, touch: true
   belongs_to :user
 
   validates :profile_id, inclusion: { in: -> (operation) { operation.user ? operation.user.profiles.pluck(:id) : [] } }, allow_blank: true
@@ -32,4 +32,13 @@ class Operation < ActiveRecord::Base
   validates :amount_cents, presence: true
 
   monetize :amount_cents, as: :amount
+
+  after_commit :update_account_balance!
+
+  private
+
+  # Update assigned account balance
+  def update_account_balance!
+    account.recalculate_balance!
+  end
 end

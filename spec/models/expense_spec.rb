@@ -23,6 +23,9 @@
 require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
-  subject { create(:expense) }
-  it { should validate_numericality_of(:amount_cents).is_less_than(0) }
+  context 'validations' do
+    subject { create(:expense) }
+    it { should validate_numericality_of(:amount_cents).is_less_than(0) }
+  end
+
 end
